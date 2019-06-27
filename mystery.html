@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<head>
+  <title>Cypher</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://www.freshfromflorida.com/var/ezdemo_site/storage/images/media/images/plant-industry-images/detective-150/126183-1-eng-US/detective-150.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <!-- <script src="mm.js"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font: 400 15px/1.8 Lato, sans-serif;
+    color: #777;
+  }
+  h3, h4 {
+    margin: 10px 0 30px 0;
+    letter-spacing: 10px;
+    font-size: 20px;
+    color: #111;
+  }
+  .container {
+    padding: 80px 120px;
+  }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+  .carousel-inner img {
+    -webkit-filter: none(90%);
+    filter: none(90%); /* make all photos black and white */
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+  }
+  .carousel-caption h3 {
+    color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+  .bg-1 {
+    background: #2d2d30;
+    color: #bdbdbd;
+  }
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {font-style: italic;}
+  .list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail p {
+    margin-top: 15px;
+    color: #555;
+  }
+  .btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+  }
+  .modal-header, h4, .close {
+    background-color: #333;
+    color: #fff !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-header, .modal-body {
+    padding: 40px 50px;
+  }
+  .nav-tabs li a {
+    color: #777;
+  }
+  #googleMap {
+    width: 100%;
+    height: 400px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+  .navbar {
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+    color: #fff !important;
+  }
+  .navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #29292c !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+  }
+  .open .dropdown-toggle {
+    color: #fff;
+    background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+    color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+    background-color: red !important;
+  }
+  footer {
+    background-color: #2d2d30;
+    color: #f5f5f5;
+    padding: 32px;
+  }
+  footer a {
+    color: #f5f5f5;
+  }
+  footer a:hover {
+    color: #777;
+    text-decoration: none;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+  textarea {
+    resize: none;
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Cypher</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#myPage">Home</a></li>
+        <li><a href="#band">Paintings</a></li>
+        <li><a href="#tour">Poems</a></li>
+        <li><a href="#contact">Certes</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">More
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Hints</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="https://news.artnet.com/app/news-upload/2018/03/Young-Leonardo-Last-Supper-Canvas-Painting.jpg" alt="New York" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>The Last Supper</h3>
+          <p>For in the Cypher invite, find the name of the third from the right.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/26/15/mona-lisa-2.jpg" alt="Chicago" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>Mona Lisa</h3>
+          <p>You are much closer to showing your mgiht, find the bridge between the left and the right.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Leonardo_da_Vinci%2C_Salvator_Mundi%2C_c.1500%2C_oil_on_walnut%2C_45.4_%C3%97_65.6_cm.jpg/249px-Leonardo_da_Vinci%2C_Salvator_Mundi%2C_c.1500%2C_oil_on_walnut%2C_45.4_%C3%97_65.6_cm.jpg" alt="Los Angeles" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>xxxxxxxx xxxxx</h3>
+          <p>Hang in, you're almost through; find the name of this man for the last clue.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Container (The Band Section) -->
+<div id="band" class="container text-center">
+  <h3>Paintings</h3>
+  <p><em>Instructions</em></p>
+  <p>To find the first key, the paintings offer clues in three. </p>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Last Supper</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="bandmember.jpg" class="img-circle person" alt="Answer:" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>: </p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Mona Lisa</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="bandmember.jpg" class="img-circle person" alt="Answer:" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p> </p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>xxxxxxxx xxxxx</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="bandmember.jpg" class="img-circle person" alt="Answer:" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p> </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (TOUR Section) -->
+<div id="tour" class="bg-1">
+  <div class="container">
+    <h3 class="text-center">Poems</h3>
+    <p class="text-center">If the first clue you've already acquired, read these poems to find the prize desired.</p>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>A Word to the Wise: </strong><span> <div> Little owlet in the glen</div>
+<div>I'm ashamed of you;</div>
+<div>In speaking as you do,</div>
+<div>You should say, "To whom! To whom!"</div>
+<div>Not, "To who! To who!"</div>
+
+<p><div>Your small friend, Miss Katy-did,</div>
+<div>May be green, 't is true,</div>
+<div>But you never hear her say</div>
+<div>"Kay do! She do!"</div></span></li>
+      <li class="list-group-item"><strong>9.</strong><span><div>there are so many tictoc</div>
+<div>clocks everywhere telling people</div>
+<div>what toctic time it is for</div>
+<div>tictic instance five toc minutes toc</div>
+<div>past six tic</div>
+
+<p><div>Spring is not regulated and does</div>
+<div>not get out of order nor do</div>
+<div>its hands a little jerking move</div>
+<div>over numbers slowly</div>
+
+<p><div>            we do not</div>
+<div>wind it up it has no weights</div>
+<div>springs wheels inside of</div>
+<div>its slender self no indeed dear</div>
+<div>nothing of the kind.</div>
+
+<p><div>(So,when kiss Spring comes</div>
+<div>we’ll kiss each kiss other on kiss the kiss</div>
+<div>lips because tic clocks toc don’t make</div>
+<div>a toctic difference</div>
+<div>to kisskiss you and to </div>
+<div>kiss me</div>
+</span></li>
+      <li class="list-group-item">The Heart <span><p><div>It’s the lobby of the Plaza,
+<div>the systole and diastole</div>
+<div>of hard women in soft coats, soft</div>
+<div>men in hard coats, palming</div>
+<div>quarters, fingers, keys.</div>
+<div>Drop in any mailbox.</div>
+<div>I’ll answer. Please.</div>
+
+<p><div>It’s the murmur, the scarring fever,</div>
+<div>of a page, always the same,</div>
+<div>urgent, muted: calling</div>
+<div>Mr. Name. Calling Mr. Name.</div>
+
+<p><div>For the carpets of indolence,</div>
+<div>for the cut-throat chandelier,</div>
+<div>for the forced forsythia</div>
+<div>on the table—you pay, dear.</div>
+
+<p><div>But some of it’s free. A knock</div>
+<div>and rise in the ribs, gardenia</div>
+<div>pectoris, and at four a muffled din:</div>
+<div>the revolving door is bearing balloons;</div>
+<div>look out—someone’s checking in.</div>
+
+ </span></li>
+    </ul>
+
+
+
+    <div class="row text-center">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="paris.jpg" alt="Paris" width="400" height="300">
+          <p><strong>A Word to the Wise</strong></p>
+
+          <button class="btn" data-toggle="modal" data-target="#myModal">Answer:</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="newyork.jpg" alt="New York" width="400" height="300">
+          <p><strong>9.</strong></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal">Answer: </button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
+          <p><strong>The Heart</strong></p>
+
+          <button class="btn" data-toggle="modal" data-target="#myModal">Answer:</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span class="glyphicon glyphicon-lock"></span>Answer</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-user"></span> Once the answer to the riddle you know, enter it into the box below.</label>
+              <input type="number" class="form-control" id="psw" placeholder="How many?">
+            </div>
+              <button type="submit" class="btn btn-block">Enter
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+
+          <p>Need <a href="#">help?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container">
+  <h3 class="text-center">Certes</h3>
+  <p class="text-center"><em>Who doesn't love a box full of tricks, the following clues are all in a mix!</em></p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>ocean</p>
+      <p>old england</p>
+      <p>zoned</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Answer: " type="text" required>
+        </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn pull-right" type="submit">Enter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br> <br>
+
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+        70% Complete
+    </div>
+  <script>
+  $(document).ready(function(){
+    // Initialize Tooltip
+    $('[data-toggle="tooltip"]').tooltip();
+
+    // Add smooth scrolling to all links in navbar + footer link
+    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+
+        // Prevent default anchor click behavior
+        event.preventDefault();
+
+        // Store hash
+        var hash = this.hash;
+
+        // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function(){
+
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          window.location.hash = hash;
+        });
+      } // End if
+    });
+  })
+  </script>
+
+</body>
+</html>
